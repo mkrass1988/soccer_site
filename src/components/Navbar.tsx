@@ -96,21 +96,44 @@ function Navbar() {
                     display: { xs: 'block', md: 'none' },
                 }}
                 >
-                    <MenuItem onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">
-                            <Link to='/'>Home</Link>
-                        </Typography>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">
-                            <Link to='/about'>About</Link>
-                        </Typography>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">
-                            <Link to='/contact'>Contact</Link>
-                        </Typography>
-                    </MenuItem>
+                    { !isAuthenticated ?
+                        [<MenuItem onClick={handleCloseNavMenu}>
+                            <Typography textAlign="center">
+                                <Link to='/'>Home</Link>
+                            </Typography>
+                        </MenuItem>,
+                        <MenuItem onClick={handleCloseNavMenu}>
+                            <Typography textAlign="center">
+                                <Link to='/about'>About</Link>
+                            </Typography>
+                        </MenuItem>,
+                        <MenuItem onClick={handleCloseNavMenu}>
+                            <Typography textAlign="center">
+                                <Link to='/contact'>Contact</Link>
+                            </Typography>
+                        </MenuItem>]
+                        :
+                        [<MenuItem onClick={handleCloseNavMenu}>
+                            <Typography textAlign="center">
+                                <Link to='/'>Home</Link>
+                            </Typography>
+                        </MenuItem>,
+                        <MenuItem onClick={handleCloseNavMenu}>
+                            <Typography textAlign="center">
+                                <Link to='/about'>About</Link>
+                            </Typography>
+                        </MenuItem>,
+                        <MenuItem onClick={handleCloseNavMenu}>
+                            <Typography textAlign="center">
+                                <Link to='/contact'>Contact</Link>
+                            </Typography>
+                        </MenuItem>,
+                        <MenuItem onClick={handleCloseNavMenu}>
+                            <Typography textAlign="center">
+                                <Link to='/dashboard'>Dashboard</Link>
+                            </Typography>
+                        </MenuItem>]
+                    }
                 </Menu>
             </Box>
             <Typography
@@ -133,27 +156,57 @@ function Navbar() {
             </Typography>
             
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }}}>
-                <Button
+                { !isAuthenticated ?
+                [<Button
                     key='home'
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                     <Link to="/">Home</Link>
-                </Button>
+                </Button>,
                 <Button
                     key='about'
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                     <Link to="/about">About</Link>
-                </Button>
+                </Button>,
                 <Button
                     key='Contact'
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                     <Link to="/contact">Contact</Link>
+                </Button>] :
+                [<Button
+                    key='home'
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                    <Link to="/">Home</Link>
+                </Button>,
+                <Button
+                    key='about'
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                    <Link to="/about">About</Link>
+                </Button>,
+                <Button
+                    key='contact'
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                    <Link to="/contact">Contact</Link>
+                </Button>,
+                <Button
+                    key='dashboard'
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                    <Link to="/Dashboard">Dashboard</Link>
                 </Button>
+                ]}
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>
@@ -182,16 +235,15 @@ function Navbar() {
                     <MenuItem onClick={signInOnClick}>
                         <Typography textAlign="center">Login</Typography>
                     </MenuItem>:
-                    [
                     <MenuItem onClick={signOutOnClick}>
                         <Typography textAlign="center">Logout</Typography>
-                    </MenuItem>,
-                    <MenuItem onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">
-                            <Link to='/dashboard'>Dashboard</Link>
-                        </Typography>
                     </MenuItem>
-                    ]}
+                    // <MenuItem onClick={handleCloseNavMenu}>
+                    //     <Typography textAlign="center">
+                    //         <Link to='/dashboard'>Dashboard</Link>
+                    //     </Typography>
+                    // </MenuItem>
+                    }
                 </Menu>
             </Box>
             </Toolbar>

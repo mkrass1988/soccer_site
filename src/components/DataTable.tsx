@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Button from "./Button"
 import Modal from "./Modal"
-import { server_calls } from '../api/server';
+import { server_calls, liveData } from '../api/server';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useGetData } from '../custom-hooks/FetchData';
+// import options from '../api/server';
+
 
 
 const columns: GridColDef[] = [
@@ -14,7 +16,6 @@ const columns: GridColDef[] = [
     { field: 'phone_number', headerName: "Phone Number", flex: 1},
     { field: 'address', headerName: "Address", flex: 1}
 ]
-
 
 function DataTable() {
     let [ open, setOpen ] = useState(false);
@@ -34,8 +35,14 @@ function DataTable() {
         getData();
         console.log(`Selection model: ${selectionModel}`)
         setTimeout( () => {window.location.reload()}, 500)
+
     }
 
+    const premData = () => {
+        liveData();
+    }
+
+   
 
   return (
     <>
@@ -55,6 +62,10 @@ function DataTable() {
             </div> 
             <Button onClick={handleOpen} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Update</Button>
             <Button onClick={deleteData} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Delete</Button>
+            <Button onClick={premData} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Premier League</Button>  {/* TODO */}
+            <div className="flex p-5">
+                <p id="team-name" className="d-inline-flex p-2"></p>
+            </div>
         </div>
         <div className={ open ? "hidden" : "container mx-10 my-5 flex flex-col"}
             style={{ height: 400, width: '100%'}}
