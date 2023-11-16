@@ -64,7 +64,7 @@ function Navbar() {
                 textDecoration: 'none',
                 }}
             >
-                <i className="fa-regular fa-futbol">The Soccer Site</i>
+                <i className="fa-solid fa-football">The Football Site</i>
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -152,7 +152,7 @@ function Navbar() {
                 textDecoration: 'none',
                 }}
             >
-                <i className="fa-regular fa-futbol">The Soccer Site</i>
+                <i className="fa-solid fa-football">The Football Site</i>
             </Typography>
             
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }}}>
@@ -238,11 +238,6 @@ function Navbar() {
                     <MenuItem onClick={signOutOnClick}>
                         <Typography textAlign="center">Logout</Typography>
                     </MenuItem>
-                    // <MenuItem onClick={handleCloseNavMenu}>
-                    //     <Typography textAlign="center">
-                    //         <Link to='/dashboard'>Dashboard</Link>
-                    //     </Typography>
-                    // </MenuItem>
                     }
                 </Menu>
             </Box>

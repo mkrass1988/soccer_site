@@ -10,11 +10,8 @@ import { useGetData } from '../custom-hooks/FetchData';
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: "ID", width: 90, hide: true},
-    { field: 'first', headerName: "Contact First Name", flex: 1},
-    { field: 'last', headerName: "Contact Last Name", flex: 1},
-    { field: 'email', headerName: "Email", flex: 1},
-    { field: 'phone_number', headerName: "Phone Number", flex: 1},
-    { field: 'address', headerName: "Address", flex: 1}
+    { field: 'name', headerName: "Contact Name", flex: 1},
+    { field: 'team_name', headerName: "Team Name", flex: 1}
 ]
 
 function DataTable() {
@@ -34,7 +31,7 @@ function DataTable() {
         server_calls.delete(selectionModel[0])
         getData();
         console.log(`Selection model: ${selectionModel}`)
-        setTimeout( () => {window.location.reload()}, 500)
+        setTimeout( () => {window.location.reload()}, 5000)
 
     }
 
@@ -57,7 +54,7 @@ function DataTable() {
                     className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white"
                     onClick={() => handleOpen()}
                 >
-                    Create New Contact
+                    Add a Team
                 </button>
             </div> 
             <Button onClick={handleOpen} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Update</Button>
@@ -70,7 +67,7 @@ function DataTable() {
         <div className={ open ? "hidden" : "container mx-10 my-5 flex flex-col"}
             style={{ height: 400, width: '100%'}}
         >
-            <h2 className="p-3 bg-slate-300 my-2 rounded">My Contacts</h2>
+            <h2 className="p-3 bg-slate-300 my-2 rounded">My Team</h2>
             <DataGrid rows={contactData} columns={columns} rowsPerPageOptions={[5]}
             checkboxSelection={true} 
             onSelectionModelChange={ (item:any) => {

@@ -7,7 +7,7 @@ function Home() {
       className='flex flex-row justify-center mx-auto bg-cover bg-fixed'
       >
         <div className='flex place-items-center h-screen'>
-          <h3 className='p-5 bg-white bg-opacity-50 text-black rounded'>The Soccer Site</h3>
+          <h3 className='p-5 bg-white bg-opacity-50 text-black rounded'>The Football Site</h3>
         </div>
     </div>
   )
