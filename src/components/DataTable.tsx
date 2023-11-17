@@ -16,7 +16,7 @@ const columns: GridColDef[] = [
 
 function DataTable() {
     let [ open, setOpen ] = useState(false);
-    const { contactData, getData } = useGetData();
+    const { teamData, getData } = useGetData();
     const [ selectionModel, setSelectionModel ] = useState<string[]>([])
 
     const handleOpen = () => {
@@ -25,6 +25,7 @@ function DataTable() {
 
     const handleClose = () => {
         setOpen(false)
+        setTimeout( () => {window.location.reload()}, 500)
     }
 
     const deleteData = () => {
@@ -57,9 +58,9 @@ function DataTable() {
                     Add a Team
                 </button>
             </div> 
-            <Button onClick={handleOpen} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Update</Button>
-            <Button onClick={deleteData} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Delete</Button>
-            <Button onClick={premData} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Premier League</Button>  {/* TODO */}
+            <button onClick={handleOpen} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Update</button>
+            <button onClick={deleteData} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Delete</button>
+            <button onClick={premData} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Premier League</button>  TODO
             <div className="flex p-5">
                 <p id="team-name" className="d-inline-flex p-2"></p>
             </div>
@@ -68,7 +69,7 @@ function DataTable() {
             style={{ height: 400, width: '100%'}}
         >
             <h2 className="p-3 bg-slate-300 my-2 rounded">My Team</h2>
-            <DataGrid rows={contactData} columns={columns} rowsPerPageOptions={[5]}
+            <DataGrid rows={teamData} columns={columns} rowsPerPageOptions={[5]}
             checkboxSelection={true} 
             onSelectionModelChange={ (item:any) => {
                 setSelectionModel(item)

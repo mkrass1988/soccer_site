@@ -59,7 +59,7 @@ export const server_calls = {
     },
 
     update: async (id: string, data:any = {}) => {
-        const response = await fetch(`https://nfl-backend.onrender.com/api/teams${id}`,
+        const response = await fetch(`https://nfl-backend.onrender.com/api/teams/${id}`,
         {
             method: 'PUT',
             headers: {
@@ -79,7 +79,7 @@ export const server_calls = {
     },
 
     delete: async (id: string) => {
-        const response = await fetch(`https://nfl-backend.onrender.com/api/teams${id}`,
+        const response = await fetch(`https://nfl-backend.onrender.com/api/teams/${id}`,
         {
             method: 'DELETE',
             headers: {
