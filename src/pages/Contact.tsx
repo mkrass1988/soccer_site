@@ -1,4 +1,3 @@
-import React from 'react'
 import { liveData } from '../api/server'
 
 function Contact() {
