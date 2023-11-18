@@ -1,22 +1,36 @@
 const token = 'f7bf55215026bef5577c7404461774445e733dd66131c219'
 
 export const liveData = async () => {
-    let team = document.getElementById('team-id')
-    const result = await fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/${team}?lang=en%C2%AEion=us`);
+    let team_id = document.getElementById('team-dropdown') as HTMLSelectElement;
+    let the_id = team_id.options[team_id.selectedIndex];
+    let selected_id = the_id.value;
+ 
+    const result = await fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/${selected_id}?lang=en%C2%AEion=us`);
     const data = await result.json()
     let name = Object.values(data.displayName);
     var string;
     string = name.toString();
     var teamName;
     teamName = string.replaceAll(",","")
-    let team_name = <HTMLElement> document.getElementById("team-name")
-    // if (teamName === null){
-    //     alert('oops')
-    // } else {
-    team_name!.innerHTML = `${teamName}`
-    // }
-};
+    
+    const proj_result = await fetch(`https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/${selected_id}/projection?lang=en%C2%AEion=us`)
+    const proj_data = await proj_result.json()
+    let prob = Object.values(proj_data.chanceToWinThisWeek.toString());
+    var prob_string;
+    prob_string = prob.toString();
+    var winProb;
+    winProb = prob_string.replaceAll(",","")
 
+    let wins = Object.values(proj_data.projectedWins.toString());
+    var proj_wins;
+    proj_wins = wins.toString();
+    var projWins;
+    projWins = proj_wins.replaceAll(",","")
+
+    let output = document.getElementById("projection-output")
+
+    output!.innerHTML = `The ${teamName} have a ${winProb} probability to win this week and are projected to get ${projWins} wins this season`
+};
 
 
 export const server_calls = {

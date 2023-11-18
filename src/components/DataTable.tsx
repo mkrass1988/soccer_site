@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import Button from "./Button"
 import Modal from "./Modal"
-import { server_calls, liveData } from '../api/server';
+import { server_calls } from '../api/server';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useGetData } from '../custom-hooks/FetchData';
 // import options from '../api/server';
@@ -35,11 +34,6 @@ function DataTable() {
         setTimeout( () => {window.location.reload()}, 5000)
 
     }
-
-    const premData = () => {
-        liveData();
-    }
-
    
 
   return (
@@ -60,10 +54,6 @@ function DataTable() {
             </div> 
             <button onClick={handleOpen} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Update</button>
             <button onClick={deleteData} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Delete</button>
-            <button onClick={premData} className="p-3 bg-slate-300 rounded m-3 hover:bg-slate-800 hover:text-white" >Premier League</button>  TODO
-            <div className="flex p-5">
-                <p id="team-name" className="d-inline-flex p-2"></p>
-            </div>
         </div>
         <div className={ open ? "hidden" : "container mx-10 my-5 flex flex-col"}
             style={{ height: 400, width: '100%'}}

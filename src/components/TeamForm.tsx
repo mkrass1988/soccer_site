@@ -45,7 +45,7 @@ const TeamForm = ( props:TeamFormProps) => {
 
   const handleChange = (event: SelectChangeEvent) => {
     setCover(event.target.value as string);
-  }; //todo
+  };
 
   return (
     <div>
@@ -59,8 +59,8 @@ const TeamForm = ( props:TeamFormProps) => {
               <Select
                 // name='cover'
                 {...register('team_name')}
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                labelId="team-id"
+                id="team-id"
                 value={team_name}
                 label="team_name"
                 onChange={handleChange}
@@ -99,10 +99,13 @@ const TeamForm = ( props:TeamFormProps) => {
                 <MenuItem value={'Washington Commanders'}>Washington Commanders</MenuItem>
               </Select>
               </FormControl>
+              {/* todo */}
             </div>
             <div className="flex p-1">
             <Button className="flex justify-start m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white"
-            onClick={handleClose}
+            onClick={ () => {
+              handleClose
+            }}
             >
                 Submit
             </Button>
